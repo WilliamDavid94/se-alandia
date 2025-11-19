@@ -13,10 +13,6 @@ body{
   background:linear-gradient(180deg,#fffdfa,#f6f9f3);
   color:var(--text);
   min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
 }
 
 /* LOGIN BACKDROP */
@@ -124,6 +120,7 @@ body{
 .app-container{
   width:100%;
   max-width:1200px;
+  margin:20px auto;          /* centrado dentro de la página */
   background:#fff;
   border-radius:14px;
   box-shadow:0 30px 80px rgba(12,30,15,0.08);
@@ -356,9 +353,6 @@ body{
 
 /* RESPONSIVE */
 @media (max-width:800px){
-  body{
-    padding:8px;
-  }
   .app-main{
     flex-direction:column;
   }
