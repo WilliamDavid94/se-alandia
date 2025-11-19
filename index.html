@@ -1,250 +1,286 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Señalandia – Plataforma inclusiva (6-12 años)</title>
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
-<body>
-  <!-- LOGIN / REGISTRO (modal) -->
-  <div id="loginBackdrop" class="login-backdrop">
-    <div class="login-card" role="dialog" aria-labelledby="loginTitle">
-      <header class="login-header">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Señalandia - Plataforma Inclusiva</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- CAPA DE LOGIN / REGISTRO -->
+    <div class="login-backdrop" id="loginBackdrop">
+      <div class="login-card" role="dialog" aria-modal="true">
         <div class="logo-area">
           <div class="logo-circle">S</div>
-          <div class="logo-text">
-            <h1 id="loginTitle" class="logo-title">Señalandia</h1>
-            <div class="logo-subtitle">Aprende con señas, juega y sonríe</div>
+          <div>
+            <div class="logo-title">Señalandia</div>
+            <div class="logo-subtitle">
+              Plataforma de apoyo para niñas y niños con discapacidad auditiva
+            </div>
           </div>
+        </div>
+
+        <div class="login-field" style="margin-top: 16px;">
+          <label for="loginCorreo" class="login-label">Correo electrónico</label>
+          <input
+            id="loginCorreo"
+            type="email"
+            class="login-input"
+            placeholder="nombre@ejemplo.com"
+          />
+          <div id="loginCorreoError" class="login-error"></div>
+        </div>
+
+        <div class="login-field">
+          <label for="loginClave" class="login-label">Clave</label>
+          <input
+            id="loginClave"
+            type="password"
+            class="login-input"
+            placeholder="Ingresa tu clave"
+          />
+          <div id="loginClaveError" class="login-error"></div>
+        </div>
+
+        <div class="login-field" id="loginClave2Field" style="display: none;">
+          <label for="loginClave2" class="login-label">Confirmar clave</label>
+          <input
+            id="loginClave2"
+            type="password"
+            class="login-input"
+            placeholder="Repite tu clave"
+          />
+          <div id="loginClave2Error" class="login-error"></div>
+        </div>
+
+        <div class="login-footer">
+          <button id="loginButton" class="login-button" type="button">
+            <span id="loginButtonText">Ingresar</span>
+          </button>
+          <div id="loginToggleText" class="login-extra">
+            ¿No tienes cuenta?
+            <strong id="toggleToRegister">Crear usuario</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- APP PROTEGIDA (solo se muestra si hay sesión iniciada) -->
+    <div id="app" class="app-container" aria-hidden="true">
+      <header class="app-header">
+        <div>
+          <h1>Señalandia</h1>
+          <p>Plataforma de aprendizaje inclusivo</p>
+        </div>
+        <div class="header-right">
+          <div id="headerUser" class="header-user">
+            <span class="name">Invitado</span>
+            <span class="role">No autenticado</span>
+          </div>
+          <button id="logoutButton" class="btn-logout" type="button">
+            Cerrar sesión
+          </button>
         </div>
       </header>
 
-      <main class="login-body">
-        <div class="login-field">
-          <label class="login-label" for="loginCorreo">Correo</label>
-          <input
-            id="loginCorreo"
-            class="login-input"
-            type="email"
-            placeholder="ejemplo@familia.com"
-          />
-          <div id="loginCorreoError" class="login-error">Correo inválido</div>
-        </div>
-
-        <div class="login-field">
-          <label class="login-label" for="loginClave">Contraseña</label>
-          <input
-            id="loginClave"
-            class="login-input"
-            type="password"
-            placeholder="Clave"
-          />
-          <div id="loginClaveError" class="login-error">Clave obligatoria</div>
-        </div>
-
-        <div id="loginClave2Field" class="login-field" style="display:none;">
-          <label class="login-label" for="loginClave2">Confirmar clave</label>
-          <input
-            id="loginClave2"
-            class="login-input"
-            type="password"
-            placeholder="Repite la clave"
-          />
-          <div id="loginClave2Error" class="login-error">No coinciden</div>
-        </div>
-      </main>
-
-      <footer class="login-footer">
-        <button id="loginButton" class="login-button">
-          <span id="loginButtonText">Ingresar</span>
-        </button>
-        <p class="login-extra" id="loginToggleText">
-          ¿No tienes cuenta?
-          <strong id="toggleToRegister">Crear usuario</strong>
-        </p>
-      </footer>
-    </div>
-  </div>
-
-  <!-- APLICACIÓN (oculta hasta login) -->
-  <div id="app" class="app-container" aria-hidden="true">
-    <header class="app-header" role="banner">
-      <div class="logo-area">
-        <div class="logo-circle">S</div>
-        <div class="logo-text">
-          <div class="logo-title">Señalandia</div>
-          <div class="logo-subtitle">Plataforma inclusiva para niños</div>
-        </div>
-      </div>
-
-      <div class="header-right">
-        <div class="header-user" id="headerUser" aria-live="polite">
-          <span class="name">Invitado</span>
-          <span class="role">No autenticado</span>
-        </div>
-        <!-- onclick a función global para garantizar que funcione -->
-        <button
-          id="logoutButton"
-          class="btn-logout"
-          onclick="window.senalandiaLogout && window.senalandiaLogout()"
-        >
-          Cerrar sesión
-        </button>
-      </div>
-    </header>
-
-    <main class="app-main" role="main">
-      <aside class="sidebar" aria-label="Módulos">
-        <nav>
+      <main class="app-main">
+        <nav class="sidebar">
           <ul class="menu-list">
             <li class="menu-item active" data-section="home">Inicio</li>
-            <li class="menu-item" data-section="abecedario">Abecedario 🤟</li>
-            <li class="menu-item" data-section="vocabulario">Vocabulario 📚</li>
-            <li class="menu-item" data-section="numeros">Números 🔢</li>
-            <li class="menu-item" data-section="juegos">Juegos 🎮</li>
-            <li class="menu-item" data-section="evaluacion">Evaluación ⭐</li>
+            <li class="menu-item" data-section="abecedario">Abecedario en señas</li>
+            <li class="menu-item" data-section="vocabulario">Vocabulario cotidiano</li>
+            <li class="menu-item" data-section="numeros">Números en señas</li>
+            <li class="menu-item" data-section="juegos">Juegos inclusivos</li>
+            <li class="menu-item" data-section="evaluacion">Evaluación básica</li>
           </ul>
         </nav>
-      </aside>
 
-      <section class="content-area">
-        <!-- INICIO -->
-        <div id="section-home" class="section">
-          <h2>Bienvenido a Señalandia</h2>
-          <p>Selecciona un módulo grande y claro para comenzar.</p>
-          <div class="tiles">
-            <button class="tile" data-section="abecedario">Abecedario 🤟</button>
-            <button class="tile" data-section="vocabulario">Vocabulario 📚</button>
-            <button class="tile" data-section="numeros">Números 🔢</button>
-            <button class="tile" data-section="juegos">Juegos 🎮</button>
-            <button class="tile" data-section="evaluacion">Evaluación ⭐</button>
-          </div>
-        </div>
+        <section class="content-area">
+          <!-- INICIO -->
+          <section id="section-home" class="section">
+            <h2>Bienvenido a Señalandia</h2>
+            <p>
+              Esta plataforma está pensada para apoyar el aprendizaje de niñas y
+              niños con discapacidad auditiva, sus familias y docentes.
+              Navega por las secciones para ver el abecedario en lengua de señas,
+              vocabulario básico, números y actividades lúdicas.
+            </p>
 
-        <!-- MODULO: ABECEDARIO -->
-        <div id="section-abecedario" class="section" hidden>
-          <h2>Abecedario (Lengua de Señas)</h2>
-          <p>Aprendamos las letras con videos y repetición.</p>
+            <div class="tiles">
+              <div class="tile" data-section="abecedario">
+                Abecedario en señas
+              </div>
+              <div class="tile" data-section="vocabulario">
+                Vocabulario cotidiano
+              </div>
+              <div class="tile" data-section="numeros">
+                Números en señas
+              </div>
+              <div class="tile" data-section="juegos">
+                Juegos inclusivos
+              </div>
+            </div>
+          </section>
 
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/SKeBZpjWTko"
-              title="Abecedario LSC"
-              allowfullscreen
-            ></iframe>
-          </div>
+          <!-- ABECEDARIO -->
+          <section id="section-abecedario" class="section" hidden>
+            <h2>Abecedario en lengua de señas</h2>
+            <p class="text-muted">
+              A continuación, algunos recursos en video para apoyar el aprendizaje
+              del abecedario en lengua de señas.
+            </p>
 
-          <div class="video-grid">
-            <div class="video-card">
+            <div class="video-wrap">
               <iframe
-                src="https://www.youtube.com/embed/7SmEeoNeZXY"
-                title="Abecedario LSC 2"
+                src="https://www.youtube.com/embed/gOXn7U_xwYk"
+                title="Abecedario en Lengua de Señas Colombiana"
                 allowfullscreen
               ></iframe>
-              <div class="caption">Alfabeto LSC (alternativo)</div>
             </div>
 
-            <div class="video-card">
+            <div class="video-grid">
+              <div class="video-card">
+                <iframe
+                  src="https://www.youtube.com/embed/3bJth4LwHe4"
+                  title="Abecedario LSC - Ejemplo 1"
+                  allowfullscreen
+                ></iframe>
+                <p class="caption">
+                  Video de refuerzo para la práctica del abecedario.
+                </p>
+              </div>
+              <div class="video-card">
+                <iframe
+                  src="https://www.youtube.com/embed/gC9drIW6DC0"
+                  title="Abecedario LSC - Ejemplo 2"
+                  allowfullscreen
+                ></iframe>
+                <p class="caption">
+                  Otra propuesta visual para trabajar las letras en señas.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- VOCABULARIO -->
+          <section id="section-vocabulario" class="section" hidden>
+            <h2>Vocabulario cotidiano en señas</h2>
+            <p class="text-muted">
+              Palabras de uso diario que facilitan la comunicación en familia
+              y en el contexto escolar.
+            </p>
+
+            <div class="video-wrap">
               <iframe
-                src="https://www.youtube.com/embed/45A5xLRBcx8"
-                title="Abecedario LSC 3"
+                src="https://www.youtube.com/embed/qA9snFwU_KU"
+                title="Vocabulario básico en Lengua de Señas"
                 allowfullscreen
               ></iframe>
-              <div class="caption">Aprendamos LSC (playlist)</div>
             </div>
-          </div>
-        </div>
 
-        <!-- MODULO: VOCABULARIO -->
-        <div id="section-vocabulario" class="section" hidden>
-          <h2>Vocabulario básico</h2>
-          <p>Palabras cotidianas en LSC.</p>
+            <div class="video-grid">
+              <div class="video-card">
+                <iframe
+                  src="https://www.youtube.com/embed/MVIBosHuLlI"
+                  title="Saludos en señas"
+                  allowfullscreen
+                ></iframe>
+                <p class="caption">
+                  Saludos y expresiones básicas para la vida diaria.
+                </p>
+              </div>
+              <div class="video-card">
+                <iframe
+                  src="https://www.youtube.com/embed/3XnTA1pVf_M"
+                  title="Vocabulario escolar en señas"
+                  allowfullscreen
+                ></iframe>
+                <p class="caption">
+                  Palabras usadas en el aula: profesor, cuaderno, tarea, etc.
+                </p>
+              </div>
+            </div>
+          </section>
 
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/EOcVvy1mcYI"
-              title="Vocabulario LSC"
-              allowfullscreen
-            ></iframe>
-          </div>
+          <!-- NÚMEROS -->
+          <section id="section-numeros" class="section" hidden>
+            <h2>Números en lengua de señas</h2>
+            <p class="text-muted">
+              Recursos para aprender los números en lengua de señas, desde los
+              conteos básicos hasta números mayores.
+            </p>
 
-          <div class="video-grid">
-            <div class="video-card">
+            <div class="video-wrap">
               <iframe
-                src="https://www.youtube.com/embed/Mv-WcKpVr_o"
-                title="Curso LSC"
+                src="https://www.youtube.com/embed/2zP7FpC18m0"
+                title="Números del 1 al 20 en señas"
                 allowfullscreen
               ></iframe>
-              <div class="caption">Curso básico LSC</div>
             </div>
-            <div class="video-card">
-              <iframe
-                src="https://www.youtube.com/embed/IX5-obr2jrI"
-                title="Señas básicas"
-                allowfullscreen
-              ></iframe>
-              <div class="caption">Señas básicas</div>
+
+            <div class="video-grid">
+              <div class="video-card">
+                <iframe
+                  src="https://www.youtube.com/embed/J8L87n6mZIo"
+                  title="Números del 1 al 10"
+                  allowfullscreen
+                ></iframe>
+                <p class="caption">Conteo básico para los más pequeños.</p>
+              </div>
+              <div class="video-card">
+                <iframe
+                  src="https://www.youtube.com/embed/dBipFN9vSeY"
+                  title="Números mayores"
+                  allowfullscreen
+                ></iframe>
+                <p class="caption">
+                  Ejercicios de conteo y números más avanzados.
+                </p>
+              </div>
             </div>
-          </div>
-        </div>
+          </section>
 
-        <!-- MODULO: NÚMEROS -->
-        <div id="section-numeros" class="section" hidden>
-          <h2>Números y conteo</h2>
-          <p>Practica contando y señalando números.</p>
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/84PqeEpHYF8"
-              title="Números en señas"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
+          <!-- JUEGOS -->
+          <section id="section-juegos" class="section" hidden>
+            <h2>Juego de memoria: letras y señas</h2>
+            <p class="text-muted">
+              Relaciona la letra con la descripción de su seña. Es una forma
+              lúdica de fortalecer la memoria visual y el vínculo letra–seña.
+            </p>
 
-        <!-- MODULO: JUEGOS -->
-        <div id="section-juegos" class="section" hidden>
-          <h2>Juegos de memoria</h2>
-          <p>Empareja las tarjetas iguales. Ideal para trabajar memoria visual.</p>
-
-          <div class="game-panel">
-            <div class="game-info">
-              <button class="btn btn-primary" id="startMemory">
+            <div class="game-panel">
+              <div class="game-info">
+                <div class="memory-status" id="memoryStatus">
+                  Haz clic en "Iniciar / Reiniciar juego" para comenzar.
+                </div>
+                <div class="memory-stats">
+                  Intentos: <span id="memoryMoves">0</span> |
+                  Aciertos: <span id="memoryMatches">0</span>
+                </div>
+              </div>
+              <button id="startMemory" class="btn btn-primary" type="button">
                 Iniciar / Reiniciar juego
               </button>
-              <div id="memoryStatus" class="memory-status">
-                Haz clic en el botón para comenzar.
-              </div>
-              <div id="memoryStats" class="memory-stats">
-                Intentos: <span id="memoryMoves">0</span> |
-                Aciertos: <span id="memoryMatches">0</span>
-              </div>
+              <div id="memoryBoard" class="memory-board"></div>
             </div>
+          </section>
 
-            <div id="memoryBoard" class="memory-board">
-              <!-- Se llena con JS -->
-            </div>
-          </div>
-        </div>
-
-        <!-- MODULO: EVALUACIÓN -->
-        <div id="section-evaluacion" class="section" hidden>
-          <h2>Evaluación / Retos</h2>
-          <p>Preguntas cortas y puntaje almacenado (local).</p>
-          <div id="quizArea">
+          <!-- EVALUACIÓN -->
+          <section id="section-evaluacion" class="section" hidden>
+            <h2>Evaluación básica</h2>
             <p class="text-muted">
-              Se pueden crear cuestionarios con videos y respuestas.
+              Este espacio puede usarse para realizar pequeñas verificaciones
+              de comprensión y seguimiento a los avances del estudiante.
             </p>
-            <button id="startQuiz" class="btn btn-ghost">
-              Iniciar reto (demo)
+            <button id="startQuiz" class="btn btn-ghost" type="button">
+              Mostrar ejemplo de evaluación
             </button>
-            <div id="quizResult"></div>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
+            <div id="quizResult" style="margin-top: 10px;"></div>
+          </section>
+        </section>
+      </main>
+    </div>
 
-  <script src="js/app.js"></script>
-</body>
+    <script src="js/app.js"></script>
+  </body>
 </html>
