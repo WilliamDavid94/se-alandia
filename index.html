@@ -10,9 +10,8 @@
   <!-- LOGIN / REGISTRO (modal) -->
   <div id="loginBackdrop" class="login-backdrop">
     <div class="login-card" role="dialog" aria-labelledby="loginTitle">
-      <div class="login-badge" aria-hidden="true"></div>
       <header class="login-header">
-        <div class="logo-area login-logo">
+        <div class="logo-area">
           <div class="logo-circle">S</div>
           <div class="logo-text">
             <h1 id="loginTitle" class="logo-title">Señalandia</h1>
@@ -24,26 +23,46 @@
       <main class="login-body">
         <div class="login-field">
           <label class="login-label" for="loginCorreo">Correo</label>
-          <input id="loginCorreo" class="login-input" type="email" placeholder="ejemplo@familia.com" />
+          <input
+            id="loginCorreo"
+            class="login-input"
+            type="email"
+            placeholder="ejemplo@familia.com"
+          />
           <div id="loginCorreoError" class="login-error">Correo inválido</div>
         </div>
 
         <div class="login-field">
           <label class="login-label" for="loginClave">Contraseña</label>
-          <input id="loginClave" class="login-input" type="password" placeholder="Clave" />
+          <input
+            id="loginClave"
+            class="login-input"
+            type="password"
+            placeholder="Clave"
+          />
           <div id="loginClaveError" class="login-error">Clave obligatoria</div>
         </div>
 
         <div id="loginClave2Field" class="login-field" style="display:none;">
           <label class="login-label" for="loginClave2">Confirmar clave</label>
-          <input id="loginClave2" class="login-input" type="password" placeholder="Repite la clave" />
+          <input
+            id="loginClave2"
+            class="login-input"
+            type="password"
+            placeholder="Repite la clave"
+          />
           <div id="loginClave2Error" class="login-error">No coinciden</div>
         </div>
       </main>
 
       <footer class="login-footer">
-        <button id="loginButton" class="login-button"><span id="loginButtonText">Ingresar</span></button>
-        <p class="login-extra" id="loginToggleText">¿No tienes cuenta? <strong id="toggleToRegister">Crear usuario</strong></p>
+        <button id="loginButton" class="login-button">
+          <span id="loginButtonText">Ingresar</span>
+        </button>
+        <p class="login-extra" id="loginToggleText">
+          ¿No tienes cuenta?
+          <strong id="toggleToRegister">Crear usuario</strong>
+        </p>
       </footer>
     </div>
   </div>
@@ -59,7 +78,8 @@
         </div>
       </div>
       <div class="header-user" id="headerUser" aria-live="polite">
-        <span class="name">Invitado</span><span class="role">No autenticado</span>
+        <span class="name">Invitado</span>
+        <span class="role">No autenticado</span>
       </div>
     </header>
 
@@ -78,6 +98,7 @@
       </aside>
 
       <section class="content-area">
+        <!-- INICIO -->
         <div id="section-home" class="section">
           <h2>Bienvenido a Señalandia</h2>
           <p>Selecciona un módulo grande y claro para comenzar.</p>
@@ -95,19 +116,30 @@
           <h2>Abecedario (Lengua de Señas)</h2>
           <p>Aprendamos las letras con videos y repetición.</p>
 
-          <!-- EMBEDED VIDEO: Abecedario LSC (YouTube) -->
           <div class="video-wrap">
-            <iframe src="https://www.youtube.com/embed/SKeBZpjWTko" title="Abecedario LSC" allowfullscreen></iframe>
+            <iframe
+              src="https://www.youtube.com/embed/SKeBZpjWTko"
+              title="Abecedario LSC"
+              allowfullscreen
+            ></iframe>
           </div>
 
           <div class="video-grid">
             <div class="video-card">
-              <iframe src="https://www.youtube.com/embed/7SmEeoNeZXY" title="Abecedario LSC 2" allowfullscreen></iframe>
+              <iframe
+                src="https://www.youtube.com/embed/7SmEeoNeZXY"
+                title="Abecedario LSC 2"
+                allowfullscreen
+              ></iframe>
               <div class="caption">Alfabeto LSC (alternativo)</div>
             </div>
 
             <div class="video-card">
-              <iframe src="https://www.youtube.com/embed/45A5xLRBcx8" title="Abecedario LSC 3" allowfullscreen></iframe>
+              <iframe
+                src="https://www.youtube.com/embed/45A5xLRBcx8"
+                title="Abecedario LSC 3"
+                allowfullscreen
+              ></iframe>
               <div class="caption">Aprendamos LSC (playlist)</div>
             </div>
           </div>
@@ -119,16 +151,28 @@
           <p>Palabras cotidianas en LSC.</p>
 
           <div class="video-wrap">
-            <iframe src="https://www.youtube.com/embed/EOcVvy1mcYI" title="Vocabulario LSC" allowfullscreen></iframe>
+            <iframe
+              src="https://www.youtube.com/embed/EOcVvy1mcYI"
+              title="Vocabulario LSC"
+              allowfullscreen
+            ></iframe>
           </div>
 
           <div class="video-grid">
             <div class="video-card">
-              <iframe src="https://www.youtube.com/embed/Mv-WcKpVr_o" title="Curso LSC" allowfullscreen></iframe>
+              <iframe
+                src="https://www.youtube.com/embed/Mv-WcKpVr_o"
+                title="Curso LSC"
+                allowfullscreen
+              ></iframe>
               <div class="caption">Curso básico LSC</div>
             </div>
             <div class="video-card">
-              <iframe src="https://www.youtube.com/embed/IX5-obr2jrI" title="Señas básicas" allowfullscreen></iframe>
+              <iframe
+                src="https://www.youtube.com/embed/IX5-obr2jrI"
+                title="Señas básicas"
+                allowfullscreen
+              ></iframe>
               <div class="caption">Señas básicas</div>
             </div>
           </div>
@@ -139,7 +183,11 @@
           <h2>Números y conteo</h2>
           <p>Practica contando y señalando números.</p>
           <div class="video-wrap">
-            <iframe src="https://www.youtube.com/embed/84PqeEpHYF8" title="Números en señas" allowfullscreen></iframe>
+            <iframe
+              src="https://www.youtube.com/embed/84PqeEpHYF8"
+              title="Números en señas"
+              allowfullscreen
+            ></iframe>
           </div>
         </div>
 
@@ -148,8 +196,12 @@
           <h2>Juegos de asociación</h2>
           <p>Memoria, emparejar imágenes con señas y más.</p>
           <div id="game-area">
-            <p class="text-muted">(Modo demo) Juego de memoria sencillo integrado.</p>
-            <button class="btn btn-primary" id="startMemory">Iniciar memoria (demo)</button>
+            <p class="text-muted">
+              (Modo demo) Juego de memoria sencillo integrado.
+            </p>
+            <button class="btn btn-primary" id="startMemory">
+              Iniciar memoria (demo)
+            </button>
             <div id="memoryResult" style="margin-top:10px"></div>
           </div>
         </div>
@@ -159,12 +211,15 @@
           <h2>Evaluación / Retos</h2>
           <p>Preguntas cortas y puntaje almacenado (local).</p>
           <div id="quizArea">
-            <p class="text-muted">Se pueden crear cuestionarios con videos y respuestas.</p>
-            <button id="startQuiz" class="btn btn-ghost">Iniciar reto (demo)</button>
+            <p class="text-muted">
+              Se pueden crear cuestionarios con videos y respuestas.
+            </p>
+            <button id="startQuiz" class="btn btn-ghost">
+              Iniciar reto (demo)
+            </button>
             <div id="quizResult"></div>
           </div>
         </div>
-
       </section>
     </main>
   </div>
@@ -172,4 +227,3 @@
   <script src="js/app.js"></script>
 </body>
 </html>
-
