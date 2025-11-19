@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const headerUser = document.getElementById('headerUser');
   const logoutButton = document.getElementById('logoutButton');
 
-  // secciones
   const menuItems = document.querySelectorAll('.menu-item');
   const tiles = document.querySelectorAll('.tile');
   const sections = {
@@ -60,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return null;
     }
   }
-
   function showSection(name) {
     Object.keys(sections).forEach((k) => {
       sections[k].hidden = k !== name;
@@ -100,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
     attachToggleListener();
   }
 
-  // ====== INICIALIZACIÓN (revisar si ya hay sesión guardada) ======
   function renderLoggedUser(user) {
     headerUser.innerHTML = `
       <span class="name">${user.email}</span>
@@ -122,21 +119,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (homeItem) homeItem.classList.add('active');
   }
 
+  // ====== INICIALIZACIÓN (revisar si hay sesión) ======
   const existingUser = getCurrentUser();
   if (existingUser) {
-    // Ya estaba logueado
     showAppForUser(existingUser);
   } else {
-    // No hay sesión → mostrar login
     app.style.display = 'none';
     app.setAttribute('aria-hidden', 'true');
     loginBackdrop.style.display = 'flex';
   }
 
-  // asegurar modo inicial
   setMode(false);
 
-  // ====== LOGIN / REGISTRO: CLICK BOTÓN ======
+  // ====== LOGIN / REGISTRO ======
   if (loginButton) {
     loginButton.addEventListener('click', () => {
       const correo = correoInput.value.trim();
@@ -205,34 +200,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ====== CERRAR SESIÓN ======
+  // ====== FUNCIÓN GLOBAL CERRAR SESIÓN ======
+  window.senalandiaLogout = function () {
+    setCurrentUser(null);
+
+    app.style.display = 'none';
+    app.setAttribute('aria-hidden', 'true');
+    loginBackdrop.style.display = 'flex';
+
+    if (correoInput) correoInput.value = '';
+    if (claveInput) claveInput.value = '';
+    if (clave2Input) clave2Input.value = '';
+
+    headerUser.innerHTML = `
+      <span class="name">Invitado</span>
+      <span class="role">No autenticado</span>
+    `;
+
+    setMode(false);
+  };
+
+  // extra: también por addEventListener
   if (logoutButton) {
     logoutButton.addEventListener('click', () => {
-      // limpiar sesión almacenada
-      setCurrentUser(null);
-
-      // ocultar app y mostrar login
-      app.style.display = 'none';
-      app.setAttribute('aria-hidden', 'true');
-      loginBackdrop.style.display = 'flex';
-
-      // limpiar campos
-      if (correoInput) correoInput.value = '';
-      if (claveInput) claveInput.value = '';
-      if (clave2Input) clave2Input.value = '';
-
-      // texto por defecto
-      headerUser.innerHTML = `
-        <span class="name">Invitado</span>
-        <span class="role">No autenticado</span>
-      `;
-
-      // volver a modo login
-      setMode(false);
+      window.senalandiaLogout();
     });
   }
 
-  // ====== NAVEGACIÓN ENTRE MÓDULOS ======
+  // ====== NAVEGACIÓN ======
   menuItems.forEach((mi) =>
     mi.addEventListener('click', () => {
       menuItems.forEach((i) => i.classList.remove('active'));
@@ -257,7 +252,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const memoryMovesSpan = document.getElementById('memoryMoves');
   const memoryMatchesSpan = document.getElementById('memoryMatches');
 
-  let memoryCards = [];
   let firstCard = null;
   let secondCard = null;
   let lockBoard = false;
@@ -278,7 +272,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!memoryBoard) return;
     memoryBoard.innerHTML = '';
     const shuffled = shuffle([...memoryValues]);
-    memoryCards = [];
     firstCard = null;
     secondCard = null;
     lockBoard = false;
@@ -301,7 +294,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       card.addEventListener('click', () => handleCardClick(card));
       memoryBoard.appendChild(card);
-      memoryCards.push(card);
     });
   }
 
@@ -390,3 +382,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
