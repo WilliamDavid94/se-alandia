@@ -14,7 +14,7 @@ export default function Login() {
     justifyContent: "center",
     alignItems: "center",
     height: "80vh",
-    backgroundColor: "#FEF3C7", // similar a bg-yellow-100
+    backgroundColor: "#FEF3C7",
     fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
   };
 
@@ -27,7 +27,7 @@ export default function Login() {
   };
 
   const titleStyle = {
-    color: "#16A34A", // verde
+    color: "#16A34A",
     fontSize: "1.5rem",
     marginBottom: "1rem",
     fontWeight: "700",
