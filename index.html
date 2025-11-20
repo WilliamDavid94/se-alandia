@@ -58,7 +58,7 @@
       </form>
     </div>
 
-    <!-- CONTENIDO PRINCIPAL (SE MUESTRA SOLO SI HAY SESIÓN) -->
+    <!-- CONTENIDO PRINCIPAL (SOLO SI HAY SESIÓN) -->
     <div id="main-container" class="main-layout" hidden>
       <header class="topbar">
         <div class="topbar-left">
@@ -131,7 +131,6 @@
               Recursos en video para apoyar el aprendizaje del abecedario en lengua de señas.
             </p>
 
-            <!-- VIDEO PRINCIPAL -->
             <div class="video-wrap">
               <iframe
                 src="https://www.youtube.com/embed/gOXn7U_xwYk"
@@ -175,7 +174,6 @@
               y en el contexto escolar.
             </p>
 
-            <!-- VIDEO PRINCIPAL -->
             <div class="video-wrap">
               <iframe
                 src="https://www.youtube.com/embed/qA9snFwU_KU"
@@ -219,7 +217,6 @@
               hasta números más avanzados.
             </p>
 
-            <!-- VIDEO PRINCIPAL -->
             <div class="video-wrap">
               <iframe
                 src="https://www.youtube.com/embed/2zP7FpC18m0"
@@ -262,19 +259,14 @@
               Actividades lúdicas para reforzar el aprendizaje del abecedario, vocabulario y números.
             </p>
 
-            <!-- Juego de SEÑAS (texto simulando seña) -->
             <div class="game-card">
               <h3>Juego: Adivina la seña</h3>
               <p>
                 Observa la descripción de la seña y elige la palabra correcta.
                 Este juego está pensado como una aproximación a la lengua de señas.
               </p>
-              <div id="sign-clue" class="sign-clue">
-                <!-- aquí va la pista generada por JS -->
-              </div>
-              <div class="options-grid" id="sign-options">
-                <!-- opciones generadas por JS -->
-              </div>
+              <div id="sign-clue" class="sign-clue"></div>
+              <div class="options-grid" id="sign-options"></div>
               <p id="sign-feedback" class="feedback-text"></p>
               <button id="btn-new-round" class="btn-secondary">Nueva palabra</button>
             </div>
