@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     evaluacion: document.getElementById('section-evaluacion'),
   };
 
-  // ====== UTIL LOGIN ======
+  // ====== FUNCIONES UTIL LOGIN ======
   function isValidEmail(e) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
   }
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (homeItem) homeItem.classList.add('active');
   }
 
-  // ====== INICIO (SESION GUARDADA) ======
+  // ====== INICIO: ¿HAY SESIÓN GUARDADA? ======
   const existingUser = getCurrentUser();
   if (existingUser) {
     showAppForUser(existingUser);
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loginBackdrop.style.display = 'flex';
   }
 
-  setMode(false);
+  setMode(false); // por defecto: modo login
 
   // ====== LOGIN / REGISTRO ======
   if (loginButton) {
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ====== FUNCIÓN GLOBAL CERRAR SESIÓN ======
+  // ====== CERRAR SESIÓN (LOGOUT) ======
   window.senalandiaLogout = function () {
     setCurrentUser(null);
 
