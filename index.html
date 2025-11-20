@@ -65,7 +65,7 @@
       </div>
     </div>
 
-    <!-- APP PROTEGIDA (solo se muestra si hay sesión iniciada) -->
+    <!-- APP PROTEGIDA -->
     <div id="app" class="app-container" aria-hidden="true">
       <header class="app-header">
         <div>
@@ -87,11 +87,19 @@
         <nav class="sidebar">
           <ul class="menu-list">
             <li class="menu-item active" data-section="home">Inicio</li>
-            <li class="menu-item" data-section="abecedario">Abecedario en señas</li>
-            <li class="menu-item" data-section="vocabulario">Vocabulario cotidiano</li>
-            <li class="menu-item" data-section="numeros">Números en señas</li>
+            <li class="menu-item" data-section="abecedario">
+              Abecedario en señas
+            </li>
+            <li class="menu-item" data-section="vocabulario">
+              Vocabulario cotidiano
+            </li>
+            <li class="menu-item" data-section="numeros">
+              Números en señas
+            </li>
             <li class="menu-item" data-section="juegos">Juegos inclusivos</li>
-            <li class="menu-item" data-section="evaluacion">Evaluación básica</li>
+            <li class="menu-item" data-section="evaluacion">
+              Evaluación básica
+            </li>
           </ul>
         </nav>
 
@@ -137,6 +145,16 @@
                 allowfullscreen
               ></iframe>
             </div>
+            <p class="video-link">
+              Si el video no se muestra, haz clic aquí:
+              <a
+                href="https://www.youtube.com/watch?v=gOXn7U_xwYk"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver abecedario en YouTube
+              </a>
+            </p>
 
             <div class="video-grid">
               <div class="video-card">
@@ -148,6 +166,15 @@
                 <p class="caption">
                   Video de refuerzo para la práctica del abecedario.
                 </p>
+                <p class="video-link">
+                  <a
+                    href="https://www.youtube.com/watch?v=3bJth4LwHe4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Abrir en YouTube
+                  </a>
+                </p>
               </div>
               <div class="video-card">
                 <iframe
@@ -157,6 +184,15 @@
                 ></iframe>
                 <p class="caption">
                   Otra propuesta visual para trabajar las letras en señas.
+                </p>
+                <p class="video-link">
+                  <a
+                    href="https://www.youtube.com/watch?v=gC9drIW6DC0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Abrir en YouTube
+                  </a>
                 </p>
               </div>
             </div>
@@ -177,6 +213,16 @@
                 allowfullscreen
               ></iframe>
             </div>
+            <p class="video-link">
+              Si el video no se muestra, haz clic aquí:
+              <a
+                href="https://www.youtube.com/watch?v=qA9snFwU_KU"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver vocabulario básico en YouTube
+              </a>
+            </p>
 
             <div class="video-grid">
               <div class="video-card">
@@ -188,6 +234,15 @@
                 <p class="caption">
                   Saludos y expresiones básicas para la vida diaria.
                 </p>
+                <p class="video-link">
+                  <a
+                    href="https://www.youtube.com/watch?v=MVIBosHuLlI"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Abrir en YouTube
+                  </a>
+                </p>
               </div>
               <div class="video-card">
                 <iframe
@@ -197,6 +252,15 @@
                 ></iframe>
                 <p class="caption">
                   Palabras usadas en el aula: profesor, cuaderno, tarea, etc.
+                </p>
+                <p class="video-link">
+                  <a
+                    href="https://www.youtube.com/watch?v=3XnTA1pVf_M"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Abrir en YouTube
+                  </a>
                 </p>
               </div>
             </div>
@@ -217,6 +281,16 @@
                 allowfullscreen
               ></iframe>
             </div>
+            <p class="video-link">
+              Si el video no se muestra, haz clic aquí:
+              <a
+                href="https://www.youtube.com/watch?v=2zP7FpC18m0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver números en YouTube
+              </a>
+            </p>
 
             <div class="video-grid">
               <div class="video-card">
@@ -226,6 +300,15 @@
                   allowfullscreen
                 ></iframe>
                 <p class="caption">Conteo básico para los más pequeños.</p>
+                <p class="video-link">
+                  <a
+                    href="https://www.youtube.com/watch?v=J8L87n6mZIo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Abrir en YouTube
+                  </a>
+                </p>
               </div>
               <div class="video-card">
                 <iframe
@@ -235,6 +318,15 @@
                 ></iframe>
                 <p class="caption">
                   Ejercicios de conteo y números más avanzados.
+                </p>
+                <p class="video-link">
+                  <a
+                    href="https://www.youtube.com/watch?v=dBipFN9vSeY"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Abrir en YouTube
+                  </a>
                 </p>
               </div>
             </div>
@@ -269,13 +361,48 @@
           <section id="section-evaluacion" class="section" hidden>
             <h2>Evaluación básica</h2>
             <p class="text-muted">
-              Este espacio puede usarse para realizar pequeñas verificaciones
-              de comprensión y seguimiento a los avances del estudiante.
+              Ejemplo sencillo de evaluación para revisar lo aprendido.
             </p>
-            <button id="startQuiz" class="btn btn-ghost" type="button">
-              Mostrar ejemplo de evaluación
-            </button>
-            <div id="quizResult" style="margin-top: 10px;"></div>
+
+            <div
+              id="quizContainer"
+              class="game-panel"
+              style="margin-top:10px;"
+            >
+              <p>
+                <strong>Pregunta:</strong> ¿Qué relación hay entre la letra y la
+                seña?
+              </p>
+              <p style="font-size:13px; color:#6b7280;">
+                Selecciona la opción correcta:
+              </p>
+
+              <div style="margin-top:8px;">
+                <label style="display:block; margin-bottom:4px;">
+                  <input type="radio" name="q1" value="a" />
+                  No tienen relación, son símbolos diferentes.
+                </label>
+                <label style="display:block; margin-bottom:4px;">
+                  <input type="radio" name="q1" value="b" />
+                  La seña representa visualmente la misma letra.
+                </label>
+                <label style="display:block; margin-bottom:4px;">
+                  <input type="radio" name="q1" value="c" />
+                  Solo sirven para jugar, no para comunicarse.
+                </label>
+              </div>
+
+              <button
+                id="startQuiz"
+                class="btn btn-primary"
+                type="button"
+                style="margin-top:10px;"
+              >
+                Revisar respuesta
+              </button>
+
+              <div id="quizResult" style="margin-top:10px;"></div>
+            </div>
           </section>
         </section>
       </main>
