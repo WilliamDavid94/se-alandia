@@ -138,19 +138,16 @@ function showMainForUser(user) {
   authContainer.hidden = true;
   mainContainer.hidden = false;
   userInfo.textContent = `Bienvenido, ${user.name}`;
-  // Por defecto, sección Inicio
   showSection("inicio");
 }
 
 // --- Cerrar sesión ---
 btnLogout.addEventListener("click", () => {
   clearSession();
-  // Reinicia estado visual
-  mainContainer.hidden = false;
-  authContainer.hidden = false;
 
-  // Oculta contenido principal
+  // Oculta contenido principal y muestra login
   mainContainer.hidden = true;
+  authContainer.hidden = true;
   authContainer.hidden = false;
 
   // Limpia formularios y mensajes
@@ -190,32 +187,6 @@ navLinks.forEach((btn) => {
   });
 });
 
-// --- Recuperar sesión al recargar la página ---
-window.addEventListener("DOMContentLoaded", () => {
-  const email = getSession();
-  if (!email) {
-    // Sin sesión -> mostrar login
-    authContainer.hidden = false;
-    mainContainer.hidden = true;
-    return;
-  }
-
-  const users = getUsers();
-  const user = users.find((u) => u.email === email);
-  if (user) {
-    showMainForUser(user);
-  } else {
-    clearSession();
-    authContainer.hidden = false;
-    mainContainer.hidden = true;
-  }
-
-  // Inicializar juego
-  initSignGame();
-  // Inicializar evaluación
-  initQuiz();
-});
-
 // --- Juego "Adivina la seña" ---
 const words = [
   {
@@ -253,12 +224,13 @@ function initSignGame() {
   const feedbackEl = document.getElementById("sign-feedback");
   const btnNewRound = document.getElementById("btn-new-round");
 
+  if (!clueEl || !optionsEl || !feedbackEl || !btnNewRound) return;
+
   function renderRound() {
     feedbackEl.textContent = "";
     optionsEl.innerHTML = "";
 
     currentRound = words[Math.floor(Math.random() * words.length)];
-
     clueEl.textContent = currentRound.clue;
 
     currentRound.options.forEach((opt) => {
@@ -286,6 +258,8 @@ function initSignGame() {
 function initQuiz() {
   const quizForm = document.getElementById("quiz-form");
   const quizResult = document.getElementById("quiz-result");
+
+  if (!quizForm || !quizResult) return;
 
   const correctAnswers = {
     q1: "b",
@@ -315,10 +289,26 @@ function initQuiz() {
   });
 }
 
-// Inicialización si el DOM ya está listo antes del listener
-if (document.readyState === "complete" || document.readyState === "interactive") {
-  if (document.getElementById("sign-clue")) {
-    initSignGame();
-    initQuiz();
+// --- Recuperar sesión al recargar la página ---
+window.addEventListener("DOMContentLoaded", () => {
+  // Inicializar juego y evaluación
+  initSignGame();
+  initQuiz();
+
+  const email = getSession();
+  if (!email) {
+    authContainer.hidden = false;
+    mainContainer.hidden = true;
+    return;
   }
-}
+
+  const users = getUsers();
+  const user = users.find((u) => u.email === email);
+  if (user) {
+    showMainForUser(user);
+  } else {
+    clearSession();
+    authContainer.hidden = false;
+    mainContainer.hidden = true;
+  }
+});
